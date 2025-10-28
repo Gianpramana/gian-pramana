@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorum Jaya Motor</title>
+
+  <!-- FONT & ICON -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f7f8fa;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #004aad, #0073e6);
+      color: white;
+      text-align: center;
+      padding: 20px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* NAVBAR */
+    nav {
+      background-color: #111;
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00bfff;
+    }
+
+    /* SEARCH BOX */
+    .search-box {
+      text-align: center;
+      margin: 30px 0 10px 0;
+    }
+
+    .search-box input {
+      padding: 12px 20px;
+      width: 70%;
+      max-width: 450px;
+      border-radius: 30px;
+      border: 2px solid #0073e6;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .search-box input:focus {
+      border-color: #00bfff;
+      box-shadow: 0 0 8px rgba(0,191,255,0.3);
+    }
+
+    /* KATEGORI BUTTONS */
+    .category-filter {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .category-filter button {
+      background-color: #fff;
+      border: 2px solid #0073e6;
+      color: #0073e6;
+      font-weight: 600;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .category-filter button:hover,
+    .category-filter button.active {
+      background-color: #0073e6;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* PRODUK GRID */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .product img {
+     width: 100%;
+     height: auto;       /* otomatis menyesuaikan proporsi */
+     max-height: 180px;  /* tinggi maksimal */
+     object-fit: contain; /* memastikan gambar utuh */
+     background-color: #f7f8fa; /* agar terlihat rapi jika ada ruang kosong */
+    }
+
+
+    .product:hover img {
+      transform: scale(1.05);
+    }
+
+    .product h3 {
+      margin: 15px 0 5px;
+      color: #222;
+      font-size: 1.1rem;
+    }
+
+    .category {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #ff4500;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    /* BUTTONS */
+    .btn, .buy-btn {
+      display: inline-block;
+      margin: 8px 5px;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .buy-btn {
+      background-color: #25d366;
+      color: white;
+    }
+
+    .buy-btn:hover {
+      background-color: #1ebd5a;
+      transform: scale(1.05);
+    }
+
+    .btn {
+      background-color: #0073e6;
+      color: white;
+    }
+
+    .btn:hover {
+      background-color: #005bb5;
+      transform: scale(1.05);
+    }
+
+    /* SECTION */
+    section#about, section#contact {
+      padding: 50px 20px;
+      text-align: center;
+      background-color: white;
+      margin-top: 40px;
+      border-top: 3px solid #0073e6;
+    }
+
+    section h2 {
+      color: #0073e6;
+      margin-bottom: 15px;
+    }
+
+    section p {
+      color: #555;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      .search-box input {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🏍️ Sorum Jaya Motor</h1>
+  <p>Menjual berbagai sepeda motor baru & bekas — Harga bersaing, pelayanan terbaik!</p>
+</header>
+
+<nav>
+  <a href="#produk"><i class="fa fa-motorcycle"></i> Produk</a>
+  <a href="#about"><i class="fa fa-store"></i> Tentang Kami</a>
+  <a href="#contact"><i class="fa fa-phone"></i> Kontak</a>
+</nav>
+
+<!-- SEARCH -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="🔍 Cari motor... (misal: CBR, NMAX, Trail)" onkeyup="searchMotor()">
+</div>
+
+<!-- KATEGORI -->
+<div class="category-filter">
+  <button class="active" onclick="filterCategory('all')">Semua</button>
+  <button onclick="filterCategory('Matic')">Matic</button>
+  <button onclick="filterCategory('Sport')">Sport</button>
+  <button onclick="filterCategory('Bebek')">Bebek</button>
+  <button onclick="filterCategory('Trail')">Trail</button>
+</div>
+
+<!-- PRODUK -->
+<section id="produk" class="container" id="productList">
+
+  <div class="product" data-name="Yamaha NMAX 155" data-category="Matic">
+    <img src="img/nmax.jpg" alt="Yamaha NMAX 155">
+    <h3>Yamaha NMAX 155</h3>
+    <p class="category">Matic</p>
+    <p class="price">Rp 32.000.000</p>
+    <a class="buy-btn" href="https://wa.me/6285728180418?text=Halo,%20saya%20tertarik%20dengan%20Yamaha%20NMAX%20155" target="_blank"><i class="fab fa-whatsapp"></i> Beli via WhatsApp</a>
+    <a href="detail-nmax.html" class="btn">Lihat Detail</a>
+  </div>
+
+  <div class="product" data-name="Honda CBR 150R" data-category="Sport">
+    <img src="img/cbr.jpg" alt="Honda CBR 150R">
+    <h3>Honda CBR 150R</h3>
+    <p class="category">Sport</p>
+    <p class="price">Rp 36.500.000</p>
+    <a class="buy-btn" href="https://wa.me/6285728180418?text=Halo,%20saya%20tertarik%20dengan%20Honda%20CBR%20150R" target="_blank"><i class="fab fa-whatsapp"></i> Beli via WhatsApp</a>
+    <a href="detail-cbr.html" class="btn">Lihat Detail</a>
+  </div>
+
+  <div class="product" data-name="Suzuki Satria F150" data-category="Bebek">
+    <img src="img/satriafu150.jpg" alt="Suzuki Satria F150">
+    <h3>Suzuki Satria F150</h3>
+    <p class="category">Bebek</p>
+    <p class="price">Rp 29.500.000</p>
+    <a class="buy-btn" href="https://wa.me/6285728180418?text=Halo,%20saya%20tertarik%20dengan%20Suzuki%20Satria%20F150" target="_blank"><i class="fab fa-whatsapp"></i> Beli via WhatsApp</a>
+    <a href="detail-satria.html" class="btn">Lihat Detail</a>
+  </div>
+
+  <div class="product" data-name="Kawasaki KLX 150" data-category="Trail">
+    <img src="img/kawasaki.jpg" alt="Kawasaki KLX 150">
+    <h3>Kawasaki KLX 150</h3>
+    <p class="category">Trail</p>
+    <p class="price">Rp 34.000.000</p>
+    <a class="buy-btn" href="https://wa.me/6285728180418?text=Halo,%20saya%20tertarik%20dengan%20Kawasaki%20KLX%20150" target="_blank"><i class="fab fa-whatsapp"></i> Beli via WhatsApp</a>
+    <a href="detail-kawasaki.html" class="btn">Lihat Detail</a>
+  </div>
+
+</section>
+
+<!-- TENTANG KAMI -->
+<section id="about">
+  <h2>Tentang Kami</h2>
+  <p>Sorum Jaya Motor merupakan showroom terpercaya yang menyediakan berbagai jenis sepeda motor baru dan bekas dari merek-merek ternama seperti <strong>Yamaha, Honda, Suzuki, dan Kawasaki</strong>.  
+  Kami berkomitmen memberikan pelayanan terbaik, harga bersaing, serta proses transaksi cepat dan aman.</p>
+</section>
+
+<!-- KONTAK -->
+<section id="contact">
+  <h2>Hubungi Kami</h2>
+  <p>📍 Alamat: Jl. Raya Motor No. 123, Jakarta</p>
+  <p>📞 Telepon: <a href="tel:085728180418">0857-2818-0418</a></p>
+  <p>📧 Email: <a href="mailto:info@sorumjaya.com">info@sorumjaya.com</a></p>
+</section>
+
+<footer>
+  &copy; 2025 <strong>Sorum Jaya Motor</strong>. Semua Hak Dilindungi.
+</footer>
+
+<!-- JS FILTER -->
+<script>
+function searchMotor() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const products = document.querySelectorAll('.product');
+  products.forEach(product => {
+    const name = product.getAttribute('data-name').toLowerCase();
+    const category = product.getAttribute('data-category').toLowerCase();
+    product.style.display = (name.includes(input) || category.includes(input)) ? 'block' : 'none';
+  });
+}
+
+function filterCategory(category) {
+  const products = document.querySelectorAll('.product');
+  const buttons = document.querySelectorAll('.category-filter button');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  products.forEach(product => {
+    if (category === 'all' || product.getAttribute('data-category') === category) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none';
+    }
+  });
+}
+</script>
+
+</body>
+</html>
